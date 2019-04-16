@@ -41,12 +41,13 @@
       </EntityProperty>
       <EntityProperty
         Name="letterGuid"
-        PropertyType=":Guid">
+        PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
-          <NotSearchable />
           <DisplayName
             Value="Letter Guid" />
+          <MaxLength
+            Value="12" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty

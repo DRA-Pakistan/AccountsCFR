@@ -851,7 +851,7 @@
                 DataType="CollectionView$cfr_issuedLetter">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Issued Letters" />
+                    Value="Letters Issued" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -910,9 +910,31 @@
                     </ContentItem.DataSource>
                   </ContentItem>
                   <ContentItem
+                    Name="issuedBy"
+                    Kind="Value"
+                    DataType=":String"
+                    View="Microsoft.LightSwitch.RichClient:Label">
+                    <ContentItem.Attributes>
+                      <DisplayName
+                        Value="Issued By" />
+                    </ContentItem.Attributes>
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <MemberExpression
+                            Member="cfr_issuedLetter/Properties[issuedBy]" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                  <ContentItem
                     Name="Created2"
                     Kind="Value"
                     DataType=":DateTimeOffset?">
+                    <ContentItem.Attributes>
+                      <DisplayName
+                        Value="Issued On" />
+                    </ContentItem.Attributes>
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression>
@@ -923,18 +945,34 @@
                     </ContentItem.DataSource>
                   </ContentItem>
                   <ContentItem
-                    Name="CreatedBy2"
+                    Name="letterGuid"
                     Kind="Value"
-                    DataType=":Person?">
+                    DataType=":String"
+                    View="Microsoft.LightSwitch.RichClient:Label">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <MemberExpression
-                            Member="cfr_issuedLetter/Properties[CreatedBy]" />
+                            Member="cfr_issuedLetter/Properties[letterGuid]" />
                         </ChainExpression>
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                   </ContentItem>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="View"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="CompanyWise/Methods[View]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
                 </ContentItem>
                 <ContentItem.CommandItems>
                   <ContentItem
@@ -1097,6 +1135,8 @@
         Name="GenNOC" />
       <ScreenMethod
         Name="GenDefficiency" />
+      <ScreenMethod
+        Name="View" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty

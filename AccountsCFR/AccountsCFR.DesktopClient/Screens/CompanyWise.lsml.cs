@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System;
 using System.Windows;
+using System.Windows.Browser;
 
 namespace LightSwitchApplication
 {
@@ -47,6 +48,18 @@ namespace LightSwitchApplication
         {
             this.ShowMessageBox("Defficit Letter Generated");
 
+        }
+
+        partial void View_Execute()
+        {
+            string relUrl = string.Format(@"/WF/Viewer.aspx?type={0}&nid={1}", this.issuedLetters.SelectedItem.letterType, this.issuedLetters.SelectedItem.letterGuid);
+            Microsoft.LightSwitch.Threading.Dispatchers.Main.BeginInvoke(() =>
+            {
+                
+                string baseurl = "http://"+System.Windows.Application.Current.Host.Source.Host.ToString()+":"+ System.Windows.Application.Current.Host.Source.Port.ToString();
+                //this.ShowMessageBox(baseurl + relUrl);
+                HtmlPage.Window.Navigate(new Uri(baseurl+relUrl), "_new");
+            });
         }
     }
 }

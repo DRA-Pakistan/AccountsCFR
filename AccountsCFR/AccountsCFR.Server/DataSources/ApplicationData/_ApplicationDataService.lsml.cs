@@ -9,6 +9,7 @@ namespace LightSwitchApplication
 {
     public partial class ApplicationDataService
     {
+        
         #region Audit Trail
         partial void cfr_deposits_Updating(cfr_deposit entity)
         {
@@ -181,5 +182,7 @@ namespace LightSwitchApplication
 
         #endregion
 
+
+       
     }
 }

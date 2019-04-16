@@ -120,6 +120,9 @@
     <ApplicationCommand
       Name="ScreenCommandShowCompanyWise"
       Target="!module/Methods[ShowCompanyWise]" />
+    <ApplicationCommand
+      Name="ScreenCommandShowTest"
+      Target="!module/Methods[ShowTest]" />
   </Application.Commands>
   <Application.NavigationItems>
     <ApplicationNavigationGroup
@@ -135,6 +138,9 @@
       <ApplicationNavigationLink
         Name="CompanyWise"
         Command="!module/Commands[ScreenCommandShowCompanyWise]" />
+      <ApplicationNavigationLink
+        Name="Test"
+        Command="!module/Commands[ScreenCommandShowTest]" />
     </ApplicationNavigationGroup>
     <ApplicationNavigationGroup
       Name="group">

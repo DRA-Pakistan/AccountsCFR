@@ -72,6 +72,28 @@
     <NoWarn>1522</NoWarn>
     <UseDesignTimeFeatures>false</UseDesignTimeFeatures>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoWarn>1522</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>1522</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.LightSwitch, Version=10.0.14.0, Culture=neutral, PublicKeyToken=8e9329cecb4700e9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -145,6 +167,7 @@
       <Private>True</Private>
       <ProjectCritical>True</ProjectCritical>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System.ComponentModel.Composition">
       <SpecificVersion>False</SpecificVersion>
       <ProjectCritical>True</ProjectCritical>
@@ -223,6 +246,10 @@
     <Reference Include="Microsoft.CSharp">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
+    <Reference Include="zxing.sl5, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ZXing.Net.0.16.4\lib\sl5\zxing.sl5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ServiceMetadataReference Include="..\AccountsCFR.Server\AccountsCFR.Server.csproj">
@@ -236,6 +263,9 @@
     <Compile Include="..\AccountsCFR.Server\DataSources\ApplicationData\cfr_financialYear.lsml.cs">
       <Link>UserCode\Shared\cfr_financialYear.lsml.cs</Link>
     </Compile>
+    <Compile Include="..\AccountsCFR.Server\DataSources\ApplicationData\cfr_issuedLetter.lsml.cs">
+      <Link>UserCode\Shared\cfr_issuedLetter.lsml.cs</Link>
+    </Compile>
     <Compile Include="..\AccountsCFR.Server\DataSources\ApplicationData\cfr_lu_branchName.lsml.cs">
       <Link>UserCode\Shared\cfr_lu_branchName.lsml.cs</Link>
     </Compile>
@@ -246,6 +276,9 @@
     <Compile Include="Screens\CompanyWise.lsml.cs">
       <DependentUpon>CompanyWise.lsml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\Test.lsml.cs">
+      <DependentUpon>Test.lsml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <LightSwitchModel Include="Properties\Client.lsml">
@@ -254,6 +287,8 @@
     <LightSwitchModel Include="Properties\ApplicationData\cfr_lu_branchNames.lsml" />
     <LightSwitchModel Include="Properties\ApplicationData\cfr_lu_manufacturers.lsml" />
     <LightSwitchModel Include="Properties\ApplicationData\cfr_financialYears.lsml" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\OutOfBrowserSettings.xml" />
     <ClientResource Include="Properties\Config.xml" />
@@ -266,6 +301,7 @@
     <LightSwitchModel Include="Screens\Deposits\DepositsAll.lsml" />
     <LightSwitchModel Include="Screens\FinancialYears.lsml" />
     <LightSwitchModel Include="Screens\CompanyWise.lsml" />
+    <LightSwitchModel Include="Screens\Test.lsml" />
   </ItemGroup>
   <ItemGroup>
     <_ClientBuildFile Include="default.htm">
@@ -279,6 +315,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\add-plus-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WF\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\LightSwitch\$(LightSwitchVersion)\Microsoft.LightSwitch.Build.Tasks.targets" />
@@ -295,6 +334,12 @@
         <SpecializedConfiguration />
       </FlavorProperties>
       <FlavorProperties GUID="{8BB0C5E8-0616-4F60-8E55-A43933E57E9C}" Configuration="Release|Any CPU">
+        <SpecializedConfiguration />
+      </FlavorProperties>
+      <FlavorProperties GUID="{8BB0C5E8-0616-4F60-8E55-A43933E57E9C}" Configuration="Debug|x86">
+        <SpecializedConfiguration />
+      </FlavorProperties>
+      <FlavorProperties GUID="{8BB0C5E8-0616-4F60-8E55-A43933E57E9C}" Configuration="Release|x86">
         <SpecializedConfiguration />
       </FlavorProperties>
     </VisualStudio>

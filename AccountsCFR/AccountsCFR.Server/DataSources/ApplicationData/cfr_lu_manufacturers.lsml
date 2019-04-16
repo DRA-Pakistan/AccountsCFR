@@ -103,6 +103,16 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
+        Name="licenseType"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <DisplayName
+            Value="License Type" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
         PropertyType=":Person?">
